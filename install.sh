@@ -41,12 +41,12 @@ mkdir -p wine32 wine64 2>&1 >> $log
 
 echo "   build wine64..." 2>&1 | tee -a $log
 cd wine64 2>&1 >> $log
-../configure --enable-win64 2>&1 >> $log
+../configure --without-x --enable-win64 2>&1 >> $log
 make -j 4 2>&1 >> $log
 
 echo "   build wine32..." 2>&1 | tee -a $log
 cd ../wine32 2>&1 >> $log
-../configure --with-wine64=../wine64 2>&1 >> $log
+../configure --without-x --with-wine64=../wine64 2>&1 >> $log
 make -j 4 2>&1 >> $log
 
 echo "Install wine..." 2>&1 | tee -a $log
